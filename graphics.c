@@ -39,3 +39,20 @@ void drawRectangle(int row, int col, int height, int width)
         }
     }
 }
+void drawLine(int row1, int col1, int row2, int col2)
+{
+    if(row1 == row2)
+    {
+        for(int j=col1;j<=col2;j++)
+        {
+            canvas[row1][j]='*';
+        }
+    }
+    else if(col1 == col2)
+    {
+        for(int i=row1;i<=row2;i++)
+        {
+            canvas[i][col1]='*';
+        }
+    }
+}
