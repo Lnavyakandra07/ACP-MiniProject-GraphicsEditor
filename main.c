@@ -11,7 +11,8 @@ int main()
 
     printf("1. Draw Rectangle\n");
     printf("2. Draw Line\n");
-    printf("3. Display Canvas\n");
+    printf("3. Draw Triangle\n");
+    printf("4. Display Canvas\n");
 
     printf("Enter choice: ");
     scanf("%d",&choice);
@@ -35,6 +36,15 @@ int main()
     }
 
     else if(choice==3)
+    {
+        printf("Enter row col height: ");
+        scanf("%d%d%d",&row,&col,&height);
+
+        drawTriangle(row,col,height);
+        displayCanvas();
+    }
+
+    else if(choice==4)
     {
         displayCanvas();
     }

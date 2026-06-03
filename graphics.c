@@ -56,3 +56,16 @@ void drawLine(int row1, int col1, int row2, int col2)
         }
     }
 }
+void drawTriangle(int row, int col, int height)
+{
+    for(int i=0;i<height;i++)
+    {
+        for(int j=0;j<=i;j++)
+        {
+            if(i==height-1 || j==0 || j==i)
+            {
+                canvas[row+i][col+j]='*';
+            }
+        }
+    }
+}
