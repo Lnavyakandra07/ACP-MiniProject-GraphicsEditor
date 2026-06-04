@@ -6,6 +6,25 @@
 
 extern char canvas[ROWS][COLS];
 
+#define MAX_SHAPES 50
+
+typedef struct
+{
+    int type;
+
+    int row;
+    int col;
+
+    int height;
+    int width;
+
+    int row2;
+    int col2;
+
+    int radius;
+
+} Shape;
+
 void initCanvas();
 void displayCanvas();
 void drawRectangle(int row, int col, int height, int width);
