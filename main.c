@@ -6,12 +6,14 @@ int main()
     int choice;
     int row,col,height,width;
     int r1,c1,r2,c2;
+    int radius;
 
     initCanvas();
 
     printf("1. Draw Rectangle\n");
     printf("2. Draw Line\n");
     printf("3. Draw Triangle\n");
+    printf("4. Draw Circle\n");
     printf("4. Display Canvas\n");
 
     printf("Enter choice: ");
@@ -46,8 +48,17 @@ int main()
 
     else if(choice==4)
     {
+        printf("Enter centerRow centerCol radius: ");
+        scanf("%d%d%d",&row,&col,&radius);
+
+        drawCircle(row,col,radius);
         displayCanvas();
     }
 
+    else if(choice==5)
+    {
+        displayCanvas();
+    }
+    
     return 0;
 }
