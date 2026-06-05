@@ -3,6 +3,7 @@
 
 int main()
 {
+    int deleteIndex;
     Shape shapes[MAX_SHAPES];
     int shapeCount = 0;
 
@@ -22,7 +23,8 @@ int main()
         printf("4. Draw Circle\n");
         printf("5. Display Canvas\n");
         printf("6. Show Shape List\n");
-        printf("7. Exit\n");
+        printf("7. Delete Shape\n");
+        printf("8. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d",&choice);
@@ -100,13 +102,49 @@ int main()
 
             for(int i=0;i<shapeCount;i++)
             {
-                printf("Shape %d Type %d\n",
-                       i+1,
-                       shapes[i].type);
+                printf("Shape %d : ", i+1);
+
+                if(shapes[i].type == 1)
+                    printf("Rectangle");
+
+                else if(shapes[i].type == 2)
+                    printf("Line");
+
+                else if(shapes[i].type == 3)
+                    printf("Triangle");
+
+                else if(shapes[i].type == 4)
+                    printf("Circle");
+
+                printf("\n");
             }
         }
 
         else if(choice==7)
+        { 
+            printf("Enter shape number to delete: ");
+            scanf("%d",&deleteIndex);
+
+            deleteIndex--;
+
+            if(deleteIndex >= 0 && deleteIndex < shapeCount)
+            {
+                for(int i=deleteIndex;i<shapeCount-1;i++)
+                {
+                    shapes[i] = shapes[i+1];
+                }
+
+            shapeCount--;
+
+            printf("Shape deleted successfully!\n");
+            }
+            else
+            {
+                printf("Invalid shape number!\n");
+            }
+        }
+
+        else if(choice==8)
         {
             break;
         }
