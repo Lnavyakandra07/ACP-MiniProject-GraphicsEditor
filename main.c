@@ -3,6 +3,7 @@
 
 int main()
 {
+    int modifyIndex;
     int deleteIndex;
     Shape shapes[MAX_SHAPES];
     int shapeCount = 0;
@@ -24,7 +25,8 @@ int main()
         printf("5. Display Canvas\n");
         printf("6. Show Shape List\n");
         printf("7. Delete Shape\n");
-        printf("8. Exit\n");
+        printf("8. Modify Shape\n");
+        printf("9. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d",&choice);
@@ -143,8 +145,71 @@ int main()
                 printf("Invalid shape number!\n");
             }
         }
-
         else if(choice==8)
+        {
+            printf("Enter shape number to modify: ");
+            scanf("%d",&modifyIndex);
+
+            modifyIndex--;
+
+            if(modifyIndex >= 0 && modifyIndex < shapeCount)
+            {
+                if(shapes[modifyIndex].type == 1)
+                {
+                    printf("Enter new row col height width: ");
+
+                    scanf("%d%d%d%d",
+                    &shapes[modifyIndex].row,
+                    &shapes[modifyIndex].col,
+                    &shapes[modifyIndex].height,
+                    &shapes[modifyIndex].width);
+
+                    printf("Rectangle modified successfully!\n");
+                }
+
+                else if(shapes[modifyIndex].type == 2)
+                {
+                    printf("Enter new row1 col1 row2 col2: ");
+                    scanf("%d%d%d%d",
+                    &shapes[modifyIndex].row,
+                    &shapes[modifyIndex].col,
+                    &shapes[modifyIndex].row2,
+                    &shapes[modifyIndex].col2);
+
+                    printf("Line modified successfully!\n");
+                }
+
+                else if(shapes[modifyIndex].type == 3)
+                {
+                    printf("Enter new row col height: ");
+
+                    scanf("%d%d%d",
+                    &shapes[modifyIndex].row,
+                    &shapes[modifyIndex].col,
+                    &shapes[modifyIndex].height);
+
+                    printf("Triangle modified successfully!\n");
+                }
+
+                else if(shapes[modifyIndex].type == 4)
+                {
+                    printf("Enter new centerRow centerCol radius: ");
+
+                    scanf("%d%d%d",
+                    &shapes[modifyIndex].row,
+                    &shapes[modifyIndex].col,
+                    &shapes[modifyIndex].radius);
+
+                    printf("Circle modified successfully!\n");
+                }
+            }
+            else
+            {
+                printf("Invalid shape number!\n");
+            }
+        }
+
+        else if(choice==9)
         {
             break;
         }
