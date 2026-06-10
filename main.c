@@ -26,7 +26,8 @@ int main()
         printf("6. Show Shape List\n");
         printf("7. Delete Shape\n");
         printf("8. Modify Shape\n");
-        printf("9. Exit\n");
+        printf("9. Clear Canvas\n");
+        printf("10. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d",&choice);
@@ -123,27 +124,22 @@ int main()
         }
 
         else if(choice==7)
-        { 
+        {
             printf("Enter shape number to delete: ");
             scanf("%d",&deleteIndex);
-
             deleteIndex--;
 
             if(deleteIndex >= 0 && deleteIndex < shapeCount)
             {
                 for(int i=deleteIndex;i<shapeCount-1;i++)
-                {
-                    shapes[i] = shapes[i+1];
-                }
+                shapes[i] = shapes[i+1];
 
-            shapeCount--;
-
-            printf("Shape deleted successfully!\n");
+                shapeCount--;
+                redrawCanvas(shapes, shapeCount);  // ← ADD THIS
+                printf("Shape deleted successfully!\n");
             }
             else
-            {
                 printf("Invalid shape number!\n");
-            }
         }
         else if(choice==8)
         {
@@ -163,7 +159,7 @@ int main()
                     &shapes[modifyIndex].col,
                     &shapes[modifyIndex].height,
                     &shapes[modifyIndex].width);
-
+                    redrawCanvas(shapes, shapeCount);
                     printf("Rectangle modified successfully!\n");
                 }
 
@@ -175,7 +171,7 @@ int main()
                     &shapes[modifyIndex].col,
                     &shapes[modifyIndex].row2,
                     &shapes[modifyIndex].col2);
-
+                    redrawCanvas(shapes, shapeCount);
                     printf("Line modified successfully!\n");
                 }
 
@@ -188,6 +184,7 @@ int main()
                     &shapes[modifyIndex].col,
                     &shapes[modifyIndex].height);
 
+                    redrawCanvas(shapes, shapeCount);
                     printf("Triangle modified successfully!\n");
                 }
 
@@ -199,7 +196,7 @@ int main()
                     &shapes[modifyIndex].row,
                     &shapes[modifyIndex].col,
                     &shapes[modifyIndex].radius);
-
+                    redrawCanvas(shapes, shapeCount);
                     printf("Circle modified successfully!\n");
                 }
             }
@@ -210,6 +207,12 @@ int main()
         }
 
         else if(choice==9)
+        {
+            initCanvas();
+            printf("Canvas cleared!\n");
+        }
+
+        else if(choice==10)
         {
             break;
         }

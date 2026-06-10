@@ -89,3 +89,22 @@ void drawCircle(int centerRow, int centerCol, int radius)
         }
     }
 }
+void redrawCanvas(Shape shapes[], int shapeCount)
+{
+    initCanvas();  // clear canvas first
+
+    for(int i = 0; i < shapeCount; i++)
+    {
+        if(shapes[i].type == 1)
+            drawRectangle(shapes[i].row, shapes[i].col, shapes[i].height, shapes[i].width);
+
+        else if(shapes[i].type == 2)
+            drawLine(shapes[i].row, shapes[i].col, shapes[i].row2, shapes[i].col2);
+
+        else if(shapes[i].type == 3)
+            drawTriangle(shapes[i].row, shapes[i].col, shapes[i].height);
+
+        else if(shapes[i].type == 4)
+            drawCircle(shapes[i].row, shapes[i].col, shapes[i].radius);
+    }
+}
